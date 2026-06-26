@@ -32,6 +32,19 @@ function Get-Field($file, $key) {
     if ($m) { ($m.Matches.Groups[1].Value -replace '\|c[0-9A-Fa-f]{6}','' -replace '\|r','').Trim() } else { "" }
 }
 
+function Get-Dependencies($file) {
+    # Reads "## DependsOn: Lib1 Lib2>=43" (space-separated), strips version constraints -> @("Lib1","Lib2")
+    if (-not $file -or -not (Test-Path $file)) { return @() }
+    $m = Select-String -Path $file -Pattern '^##\s*DependsOn:\s*(.+)$' | Select-Object -First 1
+    if (-not $m) { return @() }
+    $deps = @()
+    foreach ($tok in ($m.Matches.Groups[1].Value -split '\s+')) {
+        $nm = ($tok -replace '([<>=!]=?\d.*)$','').Trim()   # drop >=N / >N / ==N etc.
+        if ($nm) { $deps += $nm }
+    }
+    return $deps
+}
+
 function Strip-BBCode($s) {
     if (-not $s) { return "" }
     $s = $s -replace '(?i)\[url=[^\]]+\]([^\[]*)\[/url\]', '$1'
@@ -73,11 +86,12 @@ foreach ($name in $Addons) {
     [System.IO.Compression.ZipFile]::CreateFromDirectory($folder, $zip, 'Optimal', $true)
 
     $entries += [ordered]@{
-        name        = $name
-        title       = $title
-        version     = $version
-        description = $desc
-        downloadUrl = "$rawBase/$name.zip"
+        name         = $name
+        title        = $title
+        version      = $version
+        description  = $desc
+        dependencies = @(Get-Dependencies $manifest)
+        downloadUrl  = "$rawBase/$name.zip"
     }
     Write-Host ("packaged {0} v{1}" -f $name, $version) -ForegroundColor Green
 }

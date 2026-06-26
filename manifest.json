@@ -24,7 +24,7 @@
                    {
                        "name":  "ShoyruCrosshair",
                        "title":  "Shoyru\u0027s Crosshair",
-                       "version":  "1.0",
+                       "version":  "1.1",
                        "description":  "Required dependency: LibAddonMenu-2.0 (version 43 or newer)\n\n  Replaces ESO\u0027s default reticle with a crisp, fully customizable FPS-style crosshair. The native reticle is hidden while your interact prompts (\"E to use\", etc.) keep working\n  normally.\n\n  Crosshair styles\n  \n  [*]Lines only — classic four-line crosshair\n  [*]Dot only — minimal center dot\n  [*]Lines + dot — both combined\n  \n\n  Customizâ€¦",
                        "dependencies":  [
                                             "LibAddonMenu-2.0"

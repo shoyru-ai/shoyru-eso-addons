@@ -1,0 +1,54 @@
+﻿{
+    "author":  "Shoyru",
+    "addons":  [
+                   {
+                       "name":  "DeepFissureAlert",
+                       "title":  "Deep Fissure Alert",
+                       "version":  "1.0",
+                       "description":  "",
+                       "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/DeepFissureAlert.zip"
+                   },
+                   {
+                       "name":  "DKCorrosiveAlert",
+                       "title":  "DK Corrosive Alert",
+                       "version":  "3.01",
+                       "description":  "",
+                       "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/DKCorrosiveAlert.zip"
+                   },
+                   {
+                       "name":  "ShoyHouse",
+                       "title":  "ShoyHouse",
+                       "version":  "1.0",
+                       "description":  "/shoyhouse teleports you (and friends who have this addon) to the configured home.",
+                       "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/ShoyHouse.zip"
+                   },
+                   {
+                       "name":  "ShoyruClassicCP",
+                       "title":  "Shoyru\u0027s Classic CP",
+                       "version":  "1.0",
+                       "description":  "",
+                       "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/ShoyruClassicCP.zip"
+                   },
+                   {
+                       "name":  "ShoyruCrosshair",
+                       "title":  "Shoyru\u0027s Crosshair",
+                       "version":  "1.0",
+                       "description":  "",
+                       "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/ShoyruCrosshair.zip"
+                   },
+                   {
+                       "name":  "ShoyrUI",
+                       "title":  "Shoyru\u0027s UI",
+                       "version":  "0.32",
+                       "description":  "All-inclusive tracking UI. Generic engine that folds the standalone Shoyru trackers into one addon; create a tracker for any encountered ability (Phase 2).",
+                       "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/ShoyrUI.zip"
+                   },
+                   {
+                       "name":  "ShoyruTargetClass",
+                       "title":  "Shoyru\u0027s Target Class",
+                       "version":  "1.0",
+                       "description":  "",
+                       "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/ShoyruTargetClass.zip"
+                   }
+               ]
+}

@@ -8,7 +8,8 @@
 #>
 param(
     [string]$Source = "C:\Users\jaker\eso-addons",
-    [string[]]$Addons = @()
+    [string[]]$Addons = @(),
+    [switch]$Force    # publish even if the dependency lint finds issues
 )
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -24,6 +25,16 @@ if (-not $Addons -or $Addons.Count -eq 0) {
     $Addons = Get-ChildItem $Source -Directory |
         Where-Object { $_.Name -ne '_setup' -and $_.Name -notlike '.*' } |
         Select-Object -ExpandProperty Name
+}
+
+# Pre-publish lint: catch "works on my machine" dependency bugs (e.g. unguarded LibStub) before sharing.
+$checker = Join-Path $pub "check-addons.ps1"
+if (Test-Path $checker) {
+    Write-Host "Linting addons before publish..." -ForegroundColor Cyan
+    & $checker -Source $Source -Addons $Addons
+    if ($LASTEXITCODE -ne 0 -and -not $Force) {
+        throw "Addon lint found issues (above). Fix them, or re-run with -Force to publish anyway."
+    }
 }
 
 function Get-Field($file, $key) {

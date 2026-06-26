@@ -5,21 +5,21 @@
                        "name":  "DKCorrosiveAlert",
                        "title":  "DK Corrosive Alert",
                        "version":  "3.01",
-                       "description":  "",
+                       "description":  "With Update 49 Cyrodiil is full of DragonKnight, and Corrosive armor with new class is over OP, this addon notify when corosive armor is ON near you, i hope help some people\n\nenjoy \u0026 have fun\n\n(addon no read hide information, Corrosive armor make little bit damage, addon just read IDability of damage you receive and if is by Corrosive Armor you be warn)\n\n1.01 - translate setting\n1.02 - fix error râ€¦",
                        "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/DKCorrosiveAlert.zip"
                    },
                    {
                        "name":  "ShoyruClassicCP",
                        "title":  "Shoyru\u0027s Classic CP",
                        "version":  "1.0",
-                       "description":  "",
+                       "description":  "Update 50 replaced the Champion Point display on PvP target frames with the new Veterancy rank icon. \n\nWhen you target another player in Cyrodiil, Imperial City, or Battlegrounds, you now see their seasonal Veterancy rank instead of their CP — which tells you how much they\u0027ve played this season, not how strong they are.\n\nThis addon reverts that change. Target frames show the classic champion starâ€¦",
                        "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/ShoyruClassicCP.zip"
                    },
                    {
                        "name":  "ShoyruCrosshair",
                        "title":  "Shoyru\u0027s Crosshair",
                        "version":  "1.0",
-                       "description":  "",
+                       "description":  "Required dependency: LibAddonMenu-2.0 (version 43 or newer)\n\n  Replaces ESO\u0027s default reticle with a crisp, fully customizable FPS-style crosshair. The native reticle is hidden while your interact prompts (\"E to use\", etc.) keep working\n  normally.\n\n  Crosshair styles\n  \n  [*]Lines only — classic four-line crosshair\n  [*]Dot only — minimal center dot\n  [*]Lines + dot — both combined\n  \n\n  Customizâ€¦",
                        "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/ShoyruCrosshair.zip"
                    }
                ]

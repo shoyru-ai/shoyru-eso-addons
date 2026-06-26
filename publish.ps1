@@ -32,6 +32,28 @@ function Get-Field($file, $key) {
     if ($m) { ($m.Matches.Groups[1].Value -replace '\|c[0-9A-Fa-f]{6}','' -replace '\|r','').Trim() } else { "" }
 }
 
+function Strip-BBCode($s) {
+    if (-not $s) { return "" }
+    $s = $s -replace '(?i)\[url=[^\]]+\]([^\[]*)\[/url\]', '$1'
+    $s = $s -replace '(?i)\[img\][^\[]*\[/img\]', ''
+    $s = $s -replace '(?i)\[/?[a-z][^\]]*\]', ''
+    $s = [System.Net.WebUtility]::HtmlDecode($s)
+    ($s -replace "`r", '' -replace "`n{3,}", "`n`n").Trim()
+}
+
+$script:catalog = $null
+function Get-EsouiDescription($addonName) {
+    try {
+        if (-not $script:catalog) { $script:catalog = Invoke-RestMethod "https://api.mmoui.com/v3/game/ESO/filelist.json" -TimeoutSec 30 }
+        $entry = $script:catalog | Where-Object { $_.UIDir -contains $addonName } | Select-Object -First 1
+        if (-not $entry) { return "" }
+        $d = (Invoke-RestMethod ("https://api.mmoui.com/v3/game/ESO/filedetails/{0}.json" -f $entry.UID) -TimeoutSec 30)[0]
+        $desc = Strip-BBCode $d.UIDescription
+        if ($desc.Length -gt 400) { $desc = $desc.Substring(0, 400).Trim() + "…" }
+        return $desc
+    } catch { return "" }
+}
+
 $entries = @()
 foreach ($name in $Addons) {
     $folder = Join-Path $Source $name
@@ -43,6 +65,7 @@ foreach ($name in $Addons) {
     $title   = Get-Field $manifest "Title";       if (-not $title)   { $title = $name }
     $version = Get-Field $manifest "Version";      if (-not $version) { $version = "1.0" }
     $desc    = Get-Field $manifest "Description"
+    if (-not $desc) { $desc = Get-EsouiDescription $name }
 
     # zip WITH the base folder at the zip root (so it extracts to AddOns\<Name>\)
     $zip = Join-Path $addonsDir ($name + ".zip")

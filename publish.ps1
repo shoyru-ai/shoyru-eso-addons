@@ -16,6 +16,8 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 $pub       = $PSScriptRoot
 $addonsDir = Join-Path $pub "addons"
 $rawBase   = "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons"
+# The published set is EXACTLY the addons passed in — wipe first so removed ones are deleted.
+if (Test-Path $addonsDir) { Remove-Item $addonsDir -Recurse -Force }
 New-Item -ItemType Directory -Force $addonsDir | Out-Null
 
 if (-not $Addons -or $Addons.Count -eq 0) {

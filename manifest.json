@@ -22,14 +22,14 @@
                        "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/ShoyruClassicCP.zip"
                    },
                    {
-                       "name":  "ShoyruCombatReticle",
+                       "name":  "ShoyruCrosshair",
                        "title":  "Shoyru\u0027s Combat Reticle",
                        "version":  "1.2",
                        "description":  "A clean custom crosshair plus a fully configurable hitmarker. Design your own reticle (lines, center dot, colors, outline, opacity) and get instant hit feedback: flash a hitmarker on crits only or on all damage, pick its style (adjustable cross or an X), set normal/crit colors, hold time, and a built-in sound with adjustable intensity. Everything is saved in named profiles you can switch on the fly. Type /reticle to configure.",
                        "dependencies":  [
                                             "LibAddonMenu-2.0"
                                         ],
-                       "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/ShoyruCombatReticle.zip"
+                       "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/ShoyruCrosshair.zip"
                    },
                    {
                        "name":  "ShoyruFossilizeAlert",

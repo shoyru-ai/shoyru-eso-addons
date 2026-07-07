@@ -62,16 +62,6 @@
                        "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/ShoyruBoundArmaments.zip"
                    },
                    {
-                       "name":  "AnimeWaifu",
-                       "title":  "Anime Waifu",
-                       "version":  "1.0",
-                       "description":  "Hitmarker + waifu image + sound whenever you land critical damage.",
-                       "dependencies":  [
-                                            "LibAddonMenu-2.0"
-                                        ],
-                       "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/AnimeWaifu.zip"
-                   },
-                   {
                        "name":  "ShoyrUI",
                        "title":  "Shoyru\u0027s UI",
                        "version":  "1.88",

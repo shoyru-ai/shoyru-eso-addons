@@ -64,7 +64,7 @@
                    {
                        "name":  "ShoyrUI",
                        "title":  "Shoyru\u0027s UI",
-                       "version":  "1.93",
+                       "version":  "1.94",
                        "description":  "A PvP-focused all-in-one HUD. Build a live tracker for ANY ability, buff/debuff, or gear set (uptime, stacks, procs/ICDs, delayed casts, roll-dodge warnings) with per-stack alerts, escalating colours + sounds, or minimal icons you tile into a grid-snapped tray. Plus clean movable player/target/group frames with categorised buffs \u0026 debuffs, an action-bar mover, and duration reminders (current-bar timer on the icon, other bar above). Replace the base-game HUD or run alongside it - all created in-game, no per-ability code.",
                        "dependencies":  [
                                             "LibAddonMenu-2.0"

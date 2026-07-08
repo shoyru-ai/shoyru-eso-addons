@@ -115,8 +115,11 @@ foreach ($name in $Addons) {
     Write-Host ("packaged {0} v{1}" -f $name, $version) -ForegroundColor Green
 }
 
-([ordered]@{ author = "Shoyru"; addons = $entries } | ConvertTo-Json -Depth 6) |
-    Out-File -Encoding utf8 (Join-Path $pub "manifest.json")
+# Write BOM-less UTF-8. `Out-File -Encoding utf8` under Windows PowerShell 5.1 prepends a UTF-8 BOM,
+# and the app's JSON parser (System.Text.Json on a decoded string) throws on a leading BOM -> the
+# "Browse Shoyru's Custom Addons" list comes up EMPTY. WriteAllText with UTF8Encoding($false) = no BOM.
+$manifestJson = ([ordered]@{ author = "Shoyru"; addons = $entries } | ConvertTo-Json -Depth 6)
+[System.IO.File]::WriteAllText((Join-Path $pub "manifest.json"), $manifestJson, (New-Object System.Text.UTF8Encoding($false)))
 
 @"
 # Shoyru's ESO Addons (published)

@@ -54,16 +54,19 @@ function Get-Field($file, $key) {
 }
 
 function Get-Dependencies($file) {
-    # Reads "## DependsOn: Lib1 Lib2>=43" (space-separated), strips version constraints -> @("Lib1","Lib2")
+    # Reads BOTH "## DependsOn:" and "## OptionalDependsOn:" (space-separated libs), strips version
+    # constraints, dedups -> @("Lib1","Lib2"). Optional libs are INCLUDED so the app still calls them
+    # out / installs them: e.g. SMX declares LibCombat as OptionalDependsOn (it loads without it) but
+    # is effectively useless without the combat data, so users must be told they need it.
     if (-not $file -or -not (Test-Path $file)) { return @() }
-    $m = Select-String -Path $file -Pattern '^##\s*DependsOn:\s*(.+)$' | Select-Object -First 1
-    if (-not $m) { return @() }
-    $deps = @()
-    foreach ($tok in ($m.Matches.Groups[1].Value -split '\s+')) {
-        $nm = ($tok -replace '([<>=!]=?\d.*)$','').Trim()   # drop >=N / >N / ==N etc.
-        if ($nm) { $deps += $nm }
+    $deps = [System.Collections.Generic.List[string]]::new()
+    foreach ($m in (Select-String -Path $file -Pattern '^##\s*(Optional)?DependsOn:\s*(.+)$')) {
+        foreach ($tok in ($m.Matches.Groups[2].Value -split '\s+')) {
+            $nm = ($tok -replace '([<>=!]=?\d.*)$','').Trim()   # drop >=N / >N / ==N etc.
+            if ($nm -and -not $deps.Contains($nm)) { $deps.Add($nm) }
+        }
     }
-    return $deps
+    return $deps.ToArray()
 }
 
 function Strip-BBCode($s) {

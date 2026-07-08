@@ -17,6 +17,16 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 $pub       = $PSScriptRoot
 $addonsDir = Join-Path $pub "addons"
 $rawBase   = "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons"
+# App-only: preserve each addon's EXISTING description so an addon without a local "## Description"
+# keeps what it already had. We do NOT reach out to ESOUI (that network fetch also used to hang).
+$prevDesc = @{}
+$prevManifest = Join-Path $pub "manifest.json"
+if (Test-Path $prevManifest) {
+    try {
+        $pm = Get-Content $prevManifest -Raw | ConvertFrom-Json
+        foreach ($e in $pm.addons) { if ($e.name) { $prevDesc[$e.name] = [string]$e.description } }
+    } catch {}
+}
 # The published set is EXACTLY the addons passed in — wipe first so removed ones are deleted.
 if (Test-Path $addonsDir) { Remove-Item $addonsDir -Recurse -Force }
 New-Item -ItemType Directory -Force $addonsDir | Out-Null
@@ -65,19 +75,6 @@ function Strip-BBCode($s) {
     ($s -replace "`r", '' -replace "`n{3,}", "`n`n").Trim()
 }
 
-$script:catalog = $null
-function Get-EsouiDescription($addonName) {
-    try {
-        if (-not $script:catalog) { $script:catalog = Invoke-RestMethod "https://api.mmoui.com/v3/game/ESO/filelist.json" -TimeoutSec 30 }
-        $entry = $script:catalog | Where-Object { $_.UIDir -contains $addonName } | Select-Object -First 1
-        if (-not $entry) { return "" }
-        $d = (Invoke-RestMethod ("https://api.mmoui.com/v3/game/ESO/filedetails/{0}.json" -f $entry.UID) -TimeoutSec 30)[0]
-        $desc = Strip-BBCode $d.UIDescription
-        if ($desc.Length -gt 400) { $desc = $desc.Substring(0, 400).Trim() + "…" }
-        return $desc
-    } catch { return "" }
-}
-
 $entries = @()
 foreach ($name in $Addons) {
     $folder = Join-Path $Source $name
@@ -89,12 +86,20 @@ foreach ($name in $Addons) {
     $title   = Get-Field $manifest "Title";       if (-not $title)   { $title = $name }
     $version = Get-Field $manifest "Version";      if (-not $version) { $version = "1.0" }
     $desc    = Get-Field $manifest "Description"
-    if (-not $desc) { $desc = Get-EsouiDescription $name }
+    if (-not $desc) { $desc = $prevDesc[$name] }   # keep the existing description; no ESOUI fetch
 
-    # zip WITH the base folder at the zip root (so it extracts to AddOns\<Name>\)
+    # zip WITH the base folder at the zip root (so it extracts to AddOns\<Name>\). Stage a clean copy
+    # first so dev-only folders never ship to users: docs/ (listing screenshots), tests/, and VCS dirs.
     $zip = Join-Path $addonsDir ($name + ".zip")
     if (Test-Path $zip) { Remove-Item $zip -Force }
-    [System.IO.Compression.ZipFile]::CreateFromDirectory($folder, $zip, 'Optimal', $true)
+    $stage = Join-Path ([System.IO.Path]::GetTempPath()) ("shoyru-pub\" + $name)
+    if (Test-Path $stage) { Remove-Item $stage -Recurse -Force }
+    New-Item -ItemType Directory -Force $stage | Out-Null
+    robocopy $folder $stage /E /XD docs tests .git .github /XF *.md .gitignore /NFL /NDL /NJH /NJS /NP | Out-Null
+    if ($LASTEXITCODE -ge 8) { throw "robocopy failed staging $name (code $LASTEXITCODE)" }
+    $global:LASTEXITCODE = 0   # robocopy returns 1 on success-with-copies; don't let it look like a failure
+    [System.IO.Compression.ZipFile]::CreateFromDirectory($stage, $zip, 'Optimal', $true)
+    Remove-Item $stage -Recurse -Force
 
     $entries += [ordered]@{
         name         = $name

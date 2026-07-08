@@ -70,6 +70,16 @@
                                             "LibAddonMenu-2.0"
                                         ],
                        "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/ShoyrUI.zip"
+                   },
+                   {
+                       "name":  "ShoyruPvPMetrics",
+                       "title":  "Shoyru\u0027s PvP Metrics",
+                       "version":  "1.0",
+                       "description":  "Your personal dueling coach. Every duel is recorded and broken down — damage, healing, buffs, stats, an over-time timeline and the opponent\u0027s build — then graded on a Report Card that scores six sides of your play against your own history and tells you in plain language what won or lost the fight. Ranks you across all your rivals into an overall Dueling Tier, with a live in-duel HUD. Open World to follow.",
+                       "dependencies":  [
+
+                                        ],
+                       "downloadUrl":  "https://raw.githubusercontent.com/shoyru-ai/shoyru-eso-addons/main/addons/ShoyruPvPMetrics.zip"
                    }
                ]
 }

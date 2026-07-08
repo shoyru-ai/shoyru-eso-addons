@@ -63,12 +63,16 @@ foreach ($name in $Addons) {
         }
     }
 
-    $luaFiles = Get-ChildItem $folder -Filter *.lua -Recurse -ErrorAction SilentlyContinue
-    # code lines only -- drop full-line Lua comments so a comment mentioning LibStub() isn't flagged
-    $codeLines = @()
+    # Skip tests/ and docs/ -- dev-only, not shipped, and they can be large (bloats the scan).
+    $luaFiles = Get-ChildItem $folder -Filter *.lua -Recurse -ErrorAction SilentlyContinue |
+        Where-Object { $_.FullName -notmatch '[\\/](tests|docs)[\\/]' }
+    # code lines only -- drop full-line Lua comments so a comment mentioning LibStub() isn't flagged.
+    # A generic List (not += on an array) keeps this O(n): += recopies the whole array every line,
+    # which is O(n^2) and hung for minutes on a large addon (SMX is ~7k lines in one file).
+    $codeLines = [System.Collections.Generic.List[string]]::new()
     foreach ($f in $luaFiles) {
         foreach ($ln in (Get-Content $f.FullName)) {
-            if (-not $ln.Trim().StartsWith('--')) { $codeLines += $ln }
+            if (-not $ln.Trim().StartsWith('--')) { $codeLines.Add($ln) }
         }
     }
     $code = $codeLines -join "`n"

@@ -5,7 +5,7 @@
                        "name":  "DKCorrosiveAlert",
                        "title":  "DK Corrosive Alert",
                        "version":  "3.8",
-                       "description":  "With Update 49 Cyrodiil is full of DragonKnight, and Corrosive armor with new class is over OP, this addon notify when corosive armor is ON near you, i hope help some people\n\nenjoy \u0026 have fun\n\n(addon no read hide information, Corrosive armor make little bit damage, addon just read IDability of damage you receive and if is by Corrosive Armor you be warn)\n\n1.01 - translate setting\n1.02 - fix error rÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦",
+                       "description":  "With Update 49 Cyrodiil is full of DragonKnight, and Corrosive armor with new class is over OP, this addon notify when corosive armor is ON near you, i hope help some people\n\nenjoy \u0026 have fun\n\n(addon no read hide information, Corrosive armor make little bit damage, addon just read IDability of damage you receive and if is by Corrosive Armor you be warn)\n\n1.01 - translate setting\n1.02 - fix error rÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦",
                        "dependencies":  [
                                             "LibAddonMenu-2.0"
                                         ],
@@ -15,7 +15,7 @@
                        "name":  "ShoyruClassicCP",
                        "title":  "Shoyru\u0027s Classic CP",
                        "version":  "1.0",
-                       "description":  "Update 50 replaced the Champion Point display on PvP target frames with the new Veterancy rank icon. \n\nWhen you target another player in Cyrodiil, Imperial City, or Battlegrounds, you now see their seasonal Veterancy rank instead of their CP ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â which tells you how much they\u0027ve played this season, not how strong they are.\n\nThis addon reverts that change. Target frames show the classic champion starÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦",
+                       "description":  "Update 50 replaced the Champion Point display on PvP target frames with the new Veterancy rank icon. \n\nWhen you target another player in Cyrodiil, Imperial City, or Battlegrounds, you now see their seasonal Veterancy rank instead of their CP ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â which tells you how much they\u0027ve played this season, not how strong they are.\n\nThis addon reverts that change. Target frames show the classic champion starÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦",
                        "dependencies":  [
                                             "LibAddonMenu-2.0"
                                         ],
@@ -82,7 +82,7 @@
                    {
                        "name":  "ShoyruPvPMetrics",
                        "title":  "Shoyru\u0027s PvP Metrics",
-                       "version":  "1.0.6",
+                       "version":  "1.0.7",
                        "description":  "Your personal dueling coach. Every duel is recorded and broken down — damage, healing, buffs, stats, an over-time timeline and the opponent\u0027s build — then graded on a Report Card that scores six sides of your play against your own history and tells you in plain language what won or lost the fight. Ranks you across all your rivals into an overall Dueling Tier, with a live in-duel HUD. Open World to follow.",
                        "dependencies":  [
                                             "LibCombat",

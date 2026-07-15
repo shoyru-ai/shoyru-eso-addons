@@ -5,7 +5,7 @@
                        "name":  "DKCorrosiveAlert",
                        "title":  "DK Corrosive Alert",
                        "version":  "3.8",
-                       "description":  null,
+                       "description":  "",
                        "dependencies":  [
                                             "LibAddonMenu-2.0"
                                         ],
@@ -15,7 +15,7 @@
                        "name":  "ShoyruClassicCP",
                        "title":  "Shoyru\u0027s Classic CP",
                        "version":  "1.0",
-                       "description":  null,
+                       "description":  "",
                        "dependencies":  [
                                             "LibAddonMenu-2.0"
                                         ],
@@ -35,7 +35,7 @@
                        "name":  "ShoyruFossilizeAlert",
                        "title":  "Shoyru\u0027s Fossilize Alert",
                        "version":  "1.1",
-                       "description":  null,
+                       "description":  "",
                        "dependencies":  [
                                             "LibAddonMenu-2.0"
                                         ],
@@ -45,7 +45,7 @@
                        "name":  "ShoyruKjalnarBoneTracker",
                        "title":  "Shoyru\u0027s Kjalnar Bone Tracker",
                        "version":  "2.1",
-                       "description":  null,
+                       "description":  "",
                        "dependencies":  [
                                             "LibAddonMenu-2.0"
                                         ],
@@ -55,7 +55,7 @@
                        "name":  "ShoyruBoundArmaments",
                        "title":  "Shoyru\u0027s Bound Armaments Tracker",
                        "version":  "1.1",
-                       "description":  null,
+                       "description":  "",
                        "dependencies":  [
                                             "LibAddonMenu-2.0"
                                         ],
@@ -82,7 +82,7 @@
                    {
                        "name":  "ShoyruPvPMetrics",
                        "title":  "Shoyru\u0027s PvP Metrics",
-                       "version":  "1.0.15",
+                       "version":  "1.0.16",
                        "description":  "Your personal dueling coach. Every duel is recorded and broken down — damage, healing, buffs, stats, an over-time timeline and the opponent\u0027s build — then graded on a Report Card that scores six sides of your play against your own history and tells you in plain language what won or lost the fight. Ranks you across all your rivals into an overall Dueling Tier, with a live in-duel HUD. Open World to follow.",
                        "dependencies":  [
                                             "LibCombat",
